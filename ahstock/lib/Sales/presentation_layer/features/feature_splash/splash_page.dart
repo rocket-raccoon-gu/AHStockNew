@@ -630,7 +630,7 @@ class _SplashPageNewState extends State<SplashPage>
             Container(
               decoration: const BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage('assets/splash.png'), fit: BoxFit.fill),
+                    image: AssetImage('assets/splash2.png'), fit: BoxFit.fill),
               ),
               child: Center(
                 child: Image.asset(
