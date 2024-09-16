@@ -223,6 +223,16 @@ class LoginCubit extends Cubit<LoginState> {
 
       getBaseLogin(userid, password, packageInfo);
 
+      // if (userid == "ahqa_sales" && password == "sales@2024") {
+      //   Map<String, dynamic> mapdata = {"selected": 0};
+
+      //   emit(LoginInitial(errorMessage: "Login Success", errorcode: ""));
+      //   // serviceLocator.navigationService.openOrderPage(context);
+
+      //   serviceLocator.navigationService
+      //       .openSalesMansDashboardPage(context, mapdata);
+      // }
+
       return true;
       //   } else {
 
@@ -277,7 +287,7 @@ class LoginCubit extends Cubit<LoginState> {
 
         if (responce.statusCode == 200) {
           updateusercontroller(userId: userid, username: userid);
-          Map jsonUser = jsonDecode(responce.body);
+          // Map jsonUser = jsonDecode(responce.body);
 
           if (userid == "ahoman_sales") {
             emit(LoginInitial(
@@ -306,7 +316,7 @@ class LoginCubit extends Cubit<LoginState> {
 
         if (responce.statusCode == 200) {
           updateusercontroller(userId: userid, username: userid);
-          Map jsonUser = jsonDecode(responce.body);
+          // Map jsonUser = jsonDecode(responce.body);
 
           if (userid == "ahbahrain_sales") {
             emit(LoginInitial(
@@ -449,12 +459,10 @@ class LoginCubit extends Cubit<LoginState> {
             );
           }
 
-          emit(LoginInitial(
-              errorMessage: "Login Success",
-              errorcode: responce.statusCode.toString()));
+          // emit(LoginInitial(
+          //     errorMessage: "Login Success",
+          //     errorcode: responce.statusCode.toString()));
         }
     }
-  
-  
   }
 }

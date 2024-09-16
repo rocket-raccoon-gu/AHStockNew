@@ -102,13 +102,13 @@ class _LoginPageState extends State<LoginPage> {
               if (state.errorcode != "200") {
                 showSnackBar(
                     context: context,
-                    snackBar:
-                        showErrorDialogue1(errorMessage: state.errorMessage));
-              } else {
-                showSnackBar(
-                    context: context,
-                    snackBar: showSuccessDialogue(message: "Login Success"));
+                    snackBar: showSuccessDialogue(message: state.errorMessage));
               }
+              //else {
+              //   showSnackBar(
+              //       context: context,
+              //       snackBar: showSuccessDialogue(message: "Login Success"));
+              // }
             }
           },
           builder: (context, state) {
@@ -145,9 +145,9 @@ class _LoginPageState extends State<LoginPage> {
                             Padding(
                               padding: EdgeInsets.only(top: 95),
                               child: SizedBox(
-                                  height: 65,
+                                  height: 110,
                                   width: 250,
-                                  child: Image.asset("assets/logo.png")),
+                                  child: Image.asset("assets/logoprimary.png")),
                             ),
                             Form(
                                 key: idFormKey,
@@ -266,20 +266,33 @@ class _LoginPageState extends State<LoginPage> {
                                       child: InkWell(
                                         onTap: () {
                                           print("hihi");
-                                          if (idFormKey.currentState!
-                                                  .validate() &&
-                                              passwordcontroller
-                                                  .text.isNotEmpty) {
-                                            UserController
-                                                    .userController.appVersion =
-                                                _packageInfo.version;
-                                            BlocProvider.of<LoginCubit>(context)
-                                                .sendloginRequest(
-                                                    context: context,
-                                                    userid: idcontroller.text,
-                                                    password:
-                                                        passwordcontroller.text,
-                                                    packageInfo: _packageInfo);
+                                          if (passwordcontroller
+                                                  .text.isNotEmpty &&
+                                              idcontroller.text.isNotEmpty) {
+                                            if (idFormKey.currentState!
+                                                    .validate() &&
+                                                passwordcontroller
+                                                    .text.isNotEmpty) {
+                                              UserController.userController
+                                                      .appVersion =
+                                                  _packageInfo.version;
+                                              BlocProvider.of<LoginCubit>(
+                                                      context)
+                                                  .sendloginRequest(
+                                                      context: context,
+                                                      userid: idcontroller.text,
+                                                      password:
+                                                          passwordcontroller
+                                                              .text,
+                                                      packageInfo:
+                                                          _packageInfo);
+                                            }
+                                          } else {
+                                            showSnackBar(
+                                                context: context,
+                                                snackBar: showErrorDialogue1(
+                                                    errorMessage:
+                                                        "username and password required...!"));
                                           }
                                         },
                                         child: Container(

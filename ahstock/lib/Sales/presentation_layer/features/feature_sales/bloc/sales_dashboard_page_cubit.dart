@@ -174,7 +174,9 @@ class SalesDashBoradPageCubit extends Cubit<SalesDashBoardPageState> {
                           child: AnimatedTextKit(
                             animatedTexts: [
                               ColorizeAnimatedText(
-                                  promotionpercentage + "% OFF",
+                                  double.parse(promotionpercentage)
+                                          .toStringAsFixed(2) +
+                                      "% OFF",
                                   textStyle: colorizeTextStyle,
                                   colors: colorizeColors,
                                   textAlign: TextAlign.center),
@@ -189,7 +191,7 @@ class SalesDashBoradPageCubit extends Cubit<SalesDashBoardPageState> {
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 8.0),
                         child: Text(
-                          "Discount Price : ${data['items'][0]['discount_price']} ${getcurrencyfromurl(UserController.userController.mainbaseUrl)}",
+                          "Discount Price : ${double.parse(data['items'][0]['discount_price']).toStringAsFixed(2)} ${getcurrencyfromurl(UserController.userController.mainbaseUrl)}",
                           textAlign: TextAlign.center,
                           style: customTextStyle(
                               fontStyle: FontStyle.BodyL_Bold,
@@ -209,7 +211,7 @@ class SalesDashBoradPageCubit extends Cubit<SalesDashBoardPageState> {
                                   color: FontColor.FontPrimary),
                             ),
                             Text(
-                              "${data['items'][0]['final_price']} ${getcurrencyfromurl(UserController.userController.mainbaseUrl)}",
+                              "${double.parse(data['items'][0]['final_price']).toStringAsFixed(2)} ${getcurrencyfromurl(UserController.userController.mainbaseUrl)}",
                               style: customTextStyle(
                                   fontStyle: FontStyle.HeaderS_Bold,
                                   color: FontColor.CarnationRed),

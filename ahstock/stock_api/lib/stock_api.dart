@@ -12,7 +12,6 @@ import 'package:stock_api/utils/utils.dart';
 import 'package:uuid/uuid.dart';
 import 'package:stock_api/responses/base_response.dart';
 
-
 import 'requests/login_request.dart' as loginRequestModel;
 part 'endpoints.dart';
 part 'utils/debuggable_client.dart';
@@ -31,7 +30,6 @@ class ContentTypes {
 
 const Duration timeoutDuration = Duration(seconds: 30);
 
-
 class StockApi {
   final String applicationPath;
   final Uri baseUrl;
@@ -44,7 +42,7 @@ class StockApi {
   bool networkOnline = true;
   @visibleForTesting
   StockApi(this.baseUrl, this.applicationPath, this._client);
-    factory StockApi.create(
+  factory StockApi.create(
       {required String baseUrl,
       required String applicationPath,
       Duration connectionTimeout = timeoutDuration}) {
@@ -84,8 +82,7 @@ class StockApi {
 }
 
 extension StockGeneralApi on StockApi {
-  
-   Future<http.Response> loginService(
+  Future<http.Response> loginService(
       {required String userId,
       required String password,
       required String version}) async {
@@ -130,8 +127,8 @@ extension StockGeneralApi on StockApi {
       required String version}) async {
     // Uri url = _endpointWithApplicationPath("/pk_dv_login.php");
 
-    Uri url =
-        Uri.parse('https://uae.ahmarket.com/rest/V1/integration/admin/token');
+    // Uri url =
+    //     Uri.parse('https://uae.ahmarket.com/rest/V1/integration/admin/token');
     Uri url11 = Uri.parse(
         _endpointWithApplicationCustomPath("rest/V1/integration/admin/token"));
     // Uri url = Uri.parse(
@@ -174,10 +171,7 @@ extension StockGeneralApi on StockApi {
     }
   }
 
-
-
-
-Future profileService(
+  Future profileService(
     String token1,
   ) async {
     // Uri url = Uri.parse(
@@ -201,7 +195,6 @@ Future profileService(
         });
   }
 
-
   Future<String> generalService(
       {required String endpoint, required String token}) async {
     final url = _endpointWithApplicationPath(_ordersService + endpoint);
@@ -220,11 +213,8 @@ Future profileService(
           return response.body;
         });
   }
-  
 
-
-
-    Future<String> checkPromotionService({required String endpoint}) async {
+  Future<String> checkPromotionService({required String endpoint}) async {
     final url = Uri.parse(
         'https://admin-qatar.testuatah.com/custom-api/api/scan_barcode_percentage.php?barcode=' +
             endpoint);
@@ -259,10 +249,6 @@ Future profileService(
           return response.body;
         });
   }
-
-
-
-
 }
 
 extension on StockApi {
@@ -379,4 +365,3 @@ extension on StockApi {
     }
   }
 }
-

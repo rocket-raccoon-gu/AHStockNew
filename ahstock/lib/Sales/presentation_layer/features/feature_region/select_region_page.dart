@@ -1,4 +1,3 @@
-
 import 'package:ahstock/constants/prefefence_utils.dart';
 import 'package:ahstock/theme/styles.dart';
 import 'package:ahstock/user_controller/user_controller.dart';
@@ -54,7 +53,7 @@ class _SelectRegionPageState extends State<SelectRegionPage> {
                           FocusScope.of(context).unfocus();
                         },
                         child: Image.asset(
-                          'assets/logo2.png',
+                          'assets/logoprimary.png',
                           height: 100.0,
                         ),
                       ),

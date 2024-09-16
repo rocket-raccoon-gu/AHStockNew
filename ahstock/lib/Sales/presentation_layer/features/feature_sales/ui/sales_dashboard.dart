@@ -221,9 +221,7 @@ class _SalesDashboardState extends State<SalesDashboard>
                       children: [
                         Text(
                             "Logged in User : ${UserController.userController.userName}"),
-                        Text(UserController
-                            .userController.profileResponce.user[0].name
-                            .toString())
+                        Text("ahqa_sales")
                       ],
                     ),
                   ),
