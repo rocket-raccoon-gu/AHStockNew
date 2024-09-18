@@ -1,5 +1,3 @@
-import 'dart:developer';
-import 'dart:io';
 
 import 'package:ahstock/Sales/presentation_layer/features/feature_login/bloc/login_cubit.dart';
 import 'package:ahstock/Sales/widgets/custom_app_componenets/textfields/custom_text_form_field.dart';
@@ -11,7 +9,6 @@ import 'package:ahstock/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
@@ -84,7 +81,6 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    Size screenSize = MediaQuery.of(context).size;
     double mheight = MediaQuery.of(context).size.height * 1.22;
 
     return Scaffold(
