@@ -103,7 +103,7 @@ class _SalesDashboardState extends State<SalesDashboard>
                           color: FontColor.FontPrimary),
                     ),
                   ),
-                  CircularProgressIndicator.adaptive(),
+                  const CircularProgressIndicator.adaptive(),
                   // Lottie.asset('assets/loading.json')
                 ],
               ),
@@ -163,7 +163,7 @@ class _SalesDashboardState extends State<SalesDashboard>
                             onPressed: () {
                               Scaffold.of(context).openDrawer();
                             },
-                            icon: Icon(Icons.menu)),
+                            icon: const Icon(Icons.menu)),
                         Padding(
                           padding: const EdgeInsets.only(left: 6.0),
                           child: Text(
@@ -221,11 +221,11 @@ class _SalesDashboardState extends State<SalesDashboard>
                       children: [
                         Text(
                             "Logged in User : ${UserController.userController.userName}"),
-                        Text("ahqa_sales")
+                        const Text("ahqa_sales")
                       ],
                     ),
                   ),
-                  Divider(
+                  const Divider(
                     thickness: 1.2,
                   )
                   // GridView.builder(
@@ -293,6 +293,8 @@ class _SalesDashboardState extends State<SalesDashboard>
 }
 
 class Clock extends StatefulWidget {
+  const Clock({super.key});
+
   @override
   _ClockState createState() => _ClockState();
 }
@@ -310,7 +312,7 @@ class _ClockState extends State<Clock> {
     setState(() {
       _currentTime = DateFormat('HH:mm:ss').format(DateTime.now());
     });
-    Future.delayed(Duration(seconds: 1), _updateTime);
+    Future.delayed(const Duration(seconds: 1), _updateTime);
   }
 
   @override

@@ -1,4 +1,3 @@
-
 import 'package:ahstock/Sales/presentation_layer/features/feature_splash/bloc/splash_page_cubit.dart';
 import 'package:ahstock/Sales/presentation_layer/features/feature_splash/splash_page.dart';
 import 'package:ahstock/services/service_locator.dart';
@@ -19,6 +18,6 @@ class SplashPageRouteBuilder {
         ],
         child: MultiRepositoryProvider(providers: [
           RepositoryProvider.value(value: _serviceLocator.tradingApi),
-        ], child: SplashPage()));
+        ], child: const SplashPage()));
   }
 }

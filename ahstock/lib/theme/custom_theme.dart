@@ -1,8 +1,6 @@
-
 import 'package:ahstock/global_methods/global_colors.dart';
 import 'package:ahstock/theme/model_theme.dart';
 import 'package:ahstock/theme/themes.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 

@@ -65,7 +65,7 @@ class SalesDashBoradPageCubit extends Cubit<SalesDashBoardPageState> {
                             onTap: () {
                               Navigator.pop(context);
                             },
-                            child: Icon(
+                            child: const Icon(
                               Icons.close,
                               size: 25.0,
                             ),
@@ -130,7 +130,7 @@ class SalesDashBoradPageCubit extends Cubit<SalesDashBoardPageState> {
                             onTap: () {
                               Navigator.pop(context);
                             },
-                            child: Icon(
+                            child: const Icon(
                               Icons.close,
                               size: 25.0,
                             ),
@@ -174,9 +174,7 @@ class SalesDashBoradPageCubit extends Cubit<SalesDashBoardPageState> {
                           child: AnimatedTextKit(
                             animatedTexts: [
                               ColorizeAnimatedText(
-                                  double.parse(promotionpercentage)
-                                          .toStringAsFixed(2) +
-                                      "% OFF",
+                                  "${double.parse(promotionpercentage).toStringAsFixed(2)}% OFF",
                                   textStyle: colorizeTextStyle,
                                   colors: colorizeColors,
                                   textAlign: TextAlign.center),
@@ -267,7 +265,7 @@ class SalesDashBoradPageCubit extends Cubit<SalesDashBoardPageState> {
                             onTap: () {
                               Navigator.pop(context);
                             },
-                            child: Icon(
+                            child: const Icon(
                               Icons.close,
                               size: 25.0,
                             ),
@@ -332,7 +330,7 @@ class SalesDashBoradPageCubit extends Cubit<SalesDashBoardPageState> {
                             onTap: () {
                               Navigator.pop(context);
                             },
-                            child: Icon(
+                            child: const Icon(
                               Icons.close,
                               size: 25.0,
                             ),
@@ -441,7 +439,7 @@ Widget getPromotionStatusWithOff(String promotionStatus) {
           style: customTextStyle(fontStyle: FontStyle.BodyL_Bold),
         ),
         AnimatedTextKit(animatedTexts: [
-          ColorizeAnimatedText("$promotionStatus",
+          ColorizeAnimatedText(promotionStatus,
               textStyle: colorizeTextStyle, colors: colorizeColors)
         ]),
       ],

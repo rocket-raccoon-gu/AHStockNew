@@ -1,4 +1,3 @@
-
 import 'package:ahstock/theme/styles.dart';
 import 'package:ahstock/utils/utils.dart';
 import 'package:flutter/material.dart';
@@ -52,7 +51,7 @@ class CustomTextFormField extends StatefulWidget {
   Iterable<String>? autofillHints;
 
   CustomTextFormField(
-      {Key? key,
+      {super.key,
       required this.context,
       this.autoFocus = false,
       this.enabled = true,
@@ -96,8 +95,7 @@ class CustomTextFormField extends StatefulWidget {
       this.minimumDecimalValueLimit,
       this.textAlign = TextAlign.start,
       this.sufixWidget,
-      this.autofillHints})
-      : super(key: key);
+      this.autofillHints});
   @override
   State<CustomTextFormField> createState() => _CustomTextFormFieldState();
 }

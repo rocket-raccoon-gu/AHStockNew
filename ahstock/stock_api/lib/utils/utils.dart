@@ -545,11 +545,7 @@ String getPriceConditionbyId(int pCondition) {
 String changeDateFormat(String date) {
   if (date.contains("/")) {
     List<String> dates = date.split("/");
-    return dates.elementAt(2) +
-        "-" +
-        dates.elementAt(1) +
-        "-" +
-        dates.elementAt(0);
+    return "${dates.elementAt(2)}-${dates.elementAt(1)}-${dates.elementAt(0)}";
   }
   return "";
 }
@@ -562,13 +558,13 @@ bool validateticksize(double val, double ticksize) {
 
 serviceSend(String name) {
   if (kDebugMode) {
-    log("ServiceSend " + name);
+    log("ServiceSend $name");
   }
 }
 
 serviceSendError(String name) {
   if (kDebugMode) {
-    log("ServiceSendError " + name, error: "name");
+    log("ServiceSendError $name", error: "name");
   }
 }
 
@@ -581,11 +577,7 @@ doDateConversion(String contractDate) {
   if (contractDate == "00:00:00") {
     return "";
   }
-  return contractDate.substring(4, 8) +
-      "-" +
-      contractDate.substring(2, 4) +
-      "-" +
-      contractDate.substring(0, 2);
+  return "${contractDate.substring(4, 8)}-${contractDate.substring(2, 4)}-${contractDate.substring(0, 2)}";
 }
 
 String ocoPricecondition(int pCondition) {

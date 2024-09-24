@@ -11,9 +11,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
-var baseUrl = String.fromEnvironment('BASE_URL',
+var baseUrl = const String.fromEnvironment('BASE_URL',
     defaultValue: "https://admin-qatar.testuatah.com");
-var applicationPath = String.fromEnvironment('APPLICATION_PATH',
+var applicationPath = const String.fromEnvironment('APPLICATION_PATH',
     defaultValue: "/custom-api/api/qatar");
 
 const environment = String.fromEnvironment('FLAVOR', defaultValue: 'staging');
@@ -23,27 +23,21 @@ const debuggable = bool.fromEnvironment('DEBUGGABLE', defaultValue: true);
 const loggable = bool.fromEnvironment('LOGGABLE', defaultValue: true);
 String refferData = "";
 
-
 Future<void> main() async {
-BindingBase.debugZoneErrorsAreFatal = true;
+  BindingBase.debugZoneErrorsAreFatal = true;
 
-
-  
-   runZonedGuarded<void>(() async {
+  runZonedGuarded<void>(() async {
     // SharedPreferences prefs = await SharedPreferences.getInstance();
     // await prefs.clear();
-WidgetsFlutterBinding.ensureInitialized();
+    WidgetsFlutterBinding.ensureInitialized();
 
+    await SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
 
-await SystemChrome.setPreferredOrientations([
-    DeviceOrientation.portraitUp,
-    DeviceOrientation.portraitDown,
-  ]);
-
-  const initialRoute =
-      String.fromEnvironment('INITIAL_ROUTE', defaultValue: '/splash');
-
-  
+    const initialRoute =
+        String.fromEnvironment('INITIAL_ROUTE', defaultValue: '/splash');
 
     if (kReleaseMode) {
     } else if (kDebugMode) {
@@ -58,21 +52,19 @@ await SystemChrome.setPreferredOrientations([
       UserController.userController.region = region!;
     } else {
       // Main Base URL---------------------------------------------------
-      UserController.userController.mainbaseUrl = String.fromEnvironment(
+      UserController.userController.mainbaseUrl = const String.fromEnvironment(
           'BASE_URL',
           defaultValue: "https://admin-qatar.testuatah.com");
     }
 
-    UserController.userController.mainapplicationPath = String.fromEnvironment(
-        'APPLICATION_PATH',
-        defaultValue: "/custom-api/api/qatar");
+    UserController.userController.mainapplicationPath =
+        const String.fromEnvironment('APPLICATION_PATH',
+            defaultValue: "/custom-api/api/qatar");
 
     final locator =
         ServiceLocator(baseUrl, applicationPath, debuggable: loggable)
           ..config();
     if (debuggable) {
-
-
       runApp(RestartWidget(
         child: ChangeNotifierProvider<CustomTheme>(
             create: (BuildContext context) =>
@@ -82,9 +74,6 @@ await SystemChrome.setPreferredOrientations([
       ));
     } else {
       // runApp(SelectContryPage());
-
-  
-
 
       runApp(RestartWidget(
         child: ChangeNotifierProvider<CustomTheme>(
@@ -112,9 +101,6 @@ await SystemChrome.setPreferredOrientations([
     // FirebaseCrashlytics.instance.recordError(error, stackTrace);
     // runApp(const MyApp());
   });
-
-
-
 
   // runApp(const MyApp());
 }

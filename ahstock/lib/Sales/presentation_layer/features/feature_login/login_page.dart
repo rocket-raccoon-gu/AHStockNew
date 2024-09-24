@@ -1,4 +1,3 @@
-
 import 'package:ahstock/Sales/presentation_layer/features/feature_login/bloc/login_cubit.dart';
 import 'package:ahstock/Sales/widgets/custom_app_componenets/textfields/custom_text_form_field.dart';
 import 'package:ahstock/global_methods/global_colors.dart';
@@ -14,7 +13,7 @@ import 'package:package_info_plus/package_info_plus.dart';
 
 class LoginPage extends StatefulWidget {
   final ServiceLocator serviceLocator;
-  const LoginPage({Key? key, required this.serviceLocator}) : super(key: key);
+  const LoginPage({super.key, required this.serviceLocator});
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -35,7 +34,7 @@ class _LoginPageState extends State<LoginPage> {
   // final Stream<NetworkStatus> _stream =
   //     NetworkStatusService.networkStatusController.stream;
   // var scrollcontroller = ScrollController();
-  PackageInfo _packageInfo = PackageInfo(
+  final PackageInfo _packageInfo = PackageInfo(
     appName: 'Unknown',
     packageName: 'Unknown',
     version: 'Unknown',
@@ -139,7 +138,7 @@ class _LoginPageState extends State<LoginPage> {
                             //                           ),
                             //                         ),
                             Padding(
-                              padding: EdgeInsets.only(top: 95),
+                              padding: const EdgeInsets.only(top: 95),
                               child: SizedBox(
                                   height: 110,
                                   width: 250,
@@ -175,7 +174,9 @@ class _LoginPageState extends State<LoginPage> {
                                       padding: const EdgeInsets.only(
                                           top: 10, left: 16.0, right: 16.0),
                                       child: CustomTextFormField(
-                                        autofillHints: [AutofillHints.password],
+                                        autofillHints: const [
+                                          AutofillHints.password
+                                        ],
                                         context: context,
                                         keyboardType:
                                             TextInputType.visiblePassword,
@@ -296,11 +297,11 @@ class _LoginPageState extends State<LoginPage> {
                                           width:
                                               MediaQuery.of(context).size.width,
                                           decoration: BoxDecoration(
-                                              color: Color.fromRGBO(
+                                              color: const Color.fromRGBO(
                                                   183, 214, 53, 1),
                                               borderRadius:
                                                   BorderRadius.circular(5.0)),
-                                          child: Center(
+                                          child: const Center(
                                             child: Text("Login"),
                                           ),
                                         ),
@@ -411,8 +412,7 @@ class _LoginPageState extends State<LoginPage> {
 class ProgressIndicator extends StatefulWidget {
   final Duration duration;
   const ProgressIndicator(
-      {Key? key, this.duration = const Duration(seconds: 5)})
-      : super(key: key);
+      {super.key, this.duration = const Duration(seconds: 5)});
 
   @override
   State<ProgressIndicator> createState() => _ProgressIndicatorState();

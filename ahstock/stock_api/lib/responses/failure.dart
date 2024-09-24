@@ -1,9 +1,8 @@
 part of stock_api;
 
-
 class ResponseFailure implements Exception {
-  const ResponseFailure._({
-    this.errorCode,
+  const ResponseFailure._(
+    this.errorCode, {
     required this.errorMessage,
   });
 
@@ -17,11 +16,11 @@ class ResponseFailure implements Exception {
 }
 
 class AuthorizationFailure implements Exception {
-  static const kUnauthenticated = AuthorizationFailure._(
+  static const kUnauthenticated = AuthorizationFailure._(0,
       errorMessage: 'You are not logged in, please do refresh and log back in');
 
-  const AuthorizationFailure._({
-    this.errorCode,
+  const AuthorizationFailure._(
+    this.errorCode, {
     required this.errorMessage,
   });
 
