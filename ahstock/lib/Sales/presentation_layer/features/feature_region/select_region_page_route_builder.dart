@@ -1,4 +1,3 @@
-
 import 'package:ahstock/Sales/presentation_layer/features/feature_region/bloc/select_region_page_cubit.dart';
 import 'package:ahstock/Sales/presentation_layer/features/feature_region/select_region_page.dart';
 import 'package:ahstock/services/service_locator.dart';
@@ -19,6 +18,6 @@ class SelectRegionPageRootBuilder {
         ],
         child: MultiRepositoryProvider(providers: [
           RepositoryProvider.value(value: serviceLocator.tradingApi)
-        ], child: SelectRegionPage()));
+        ], child: const SelectRegionPage()));
   }
 }

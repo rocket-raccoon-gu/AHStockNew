@@ -1,4 +1,3 @@
-
 import 'package:ahstock/Sales/presentation_layer/features/feature_sales/bloc/sales_dashboard_page_cubit.dart';
 import 'package:ahstock/Sales/presentation_layer/features/feature_sales/ui/sales_dashboard.dart';
 import 'package:ahstock/services/service_locator.dart';
@@ -19,6 +18,6 @@ class SalesDashBoardPageRouteBuilder {
         ],
         child: MultiRepositoryProvider(providers: [
           RepositoryProvider.value(value: serviceLocator.tradingApi),
-        ], child: SalesDashboard()));
+        ], child: const SalesDashboard()));
   }
 }

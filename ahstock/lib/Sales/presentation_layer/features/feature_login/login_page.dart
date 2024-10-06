@@ -1,4 +1,3 @@
-
 import 'package:ahstock/Sales/presentation_layer/features/feature_login/bloc/login_cubit.dart';
 import 'package:ahstock/Sales/widgets/custom_app_componenets/textfields/custom_text_form_field.dart';
 import 'package:ahstock/global_methods/global_colors.dart';
@@ -8,13 +7,12 @@ import 'package:ahstock/user_controller/user_controller.dart';
 import 'package:ahstock/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
 class LoginPage extends StatefulWidget {
   final ServiceLocator serviceLocator;
-  const LoginPage({Key? key, required this.serviceLocator}) : super(key: key);
+  const LoginPage({super.key, required this.serviceLocator});
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -35,7 +33,7 @@ class _LoginPageState extends State<LoginPage> {
   // final Stream<NetworkStatus> _stream =
   //     NetworkStatusService.networkStatusController.stream;
   // var scrollcontroller = ScrollController();
-  PackageInfo _packageInfo = PackageInfo(
+  final PackageInfo _packageInfo = PackageInfo(
     appName: 'Unknown',
     packageName: 'Unknown',
     version: 'Unknown',
@@ -95,16 +93,11 @@ class _LoginPageState extends State<LoginPage> {
         body: BlocConsumer<LoginCubit, LoginState>(
           listener: (context, state) {
             if (state is LoginInitial) {
-              if (state.errorcode != "200") {
+              if (state.errorcode == "200") {
                 showSnackBar(
                     context: context,
-                    snackBar: showSuccessDialogue(message: state.errorMessage));
+                    snackBar: showSuccessDialogue(message: "Login Success"));
               }
-              //else {
-              //   showSnackBar(
-              //       context: context,
-              //       snackBar: showSuccessDialogue(message: "Login Success"));
-              // }
             }
           },
           builder: (context, state) {
@@ -123,23 +116,8 @@ class _LoginPageState extends State<LoginPage> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           // ignore: prefer_const_literals_to_create_immutables
                           children: [
-                            //                         Padding(
-                            //                           padding: const EdgeInsets.only(top: 40.0),
-                            //                           child: InkWell(
-                            //                             onTap: () async {
-                            //                               context.gNavigationService
-                            //                                   .openSignupPage(context, {});
-                            //                             },
-                            //                             child: Text(
-                            //                               "Create New Account",
-                            //                               style: customTextStyle(
-                            //                                   fontStyle: FontStyle.BodyL_Bold,
-                            //                                   color: FontColor.DodgerBlue),
-                            //                             ),
-                            //                           ),
-                            //                         ),
                             Padding(
-                              padding: EdgeInsets.only(top: 95),
+                              padding: const EdgeInsets.only(top: 95),
                               child: SizedBox(
                                   height: 110,
                                   width: 250,
@@ -175,7 +153,9 @@ class _LoginPageState extends State<LoginPage> {
                                       padding: const EdgeInsets.only(
                                           top: 10, left: 16.0, right: 16.0),
                                       child: CustomTextFormField(
-                                        autofillHints: [AutofillHints.password],
+                                        autofillHints: const [
+                                          AutofillHints.password
+                                        ],
                                         context: context,
                                         keyboardType:
                                             TextInputType.visiblePassword,
@@ -212,48 +192,6 @@ class _LoginPageState extends State<LoginPage> {
                                         },
                                       ),
                                     ),
-                                    // Padding(
-                                    //   padding: const EdgeInsets.only(
-                                    //       top: 10, right: 16.0, left: 16.0),
-                                    //   child: Row(
-                                    //     mainAxisAlignment:
-                                    //         MainAxisAlignment.end,
-                                    //     children: [
-                                    //       InkWell(
-                                    //         onTap: () {
-                                    //           // Navigator.push(
-                                    //           //     context,
-                                    //           //     PageRouteBuilder(
-                                    //           //         transitionDuration:
-                                    //           //             const Duration(seconds: 1),
-                                    //           //         pageBuilder: (BuildContext context,
-                                    //           //             Animation<double> animation,
-                                    //           //             Animation<double>
-                                    //           //                 secondAnimation) {
-                                    //           //           return SlideTransition(
-                                    //           //               position: Tween<Offset>(
-                                    //           //                 begin:
-                                    //           //                     const Offset(100, 0.0),
-                                    //           //                 end: Offset.zero,
-                                    //           //               ).animate(animation),
-                                    //           //               child: CustomWebviewPage(
-                                    //           //                   title: "Forgot Password",
-                                    //           //                   urlAddress: CommonUrls
-                                    //           //                       .forgotPasswordUrl));
-                                    //           //         }));
-                                    //         },
-                                    //         child: Text(
-                                    //           "Forgot Password",
-                                    //           style: customTextStyle(
-                                    //               fontStyle:
-                                    //                   FontStyle.BodyM_SemiBold,
-                                    //               color: FontColor.Primary),
-                                    //         ),
-                                    //       ),
-                                    //     ],
-                                    //   ),
-                                    // ),
-
                                     Padding(
                                       padding: EdgeInsets.only(
                                           top: mheight * .040,
@@ -296,11 +234,11 @@ class _LoginPageState extends State<LoginPage> {
                                           width:
                                               MediaQuery.of(context).size.width,
                                           decoration: BoxDecoration(
-                                              color: Color.fromRGBO(
+                                              color: const Color.fromRGBO(
                                                   183, 214, 53, 1),
                                               borderRadius:
                                                   BorderRadius.circular(5.0)),
-                                          child: Center(
+                                          child: const Center(
                                             child: Text("Login"),
                                           ),
                                         ),
@@ -340,79 +278,12 @@ class _LoginPageState extends State<LoginPage> {
           },
         ));
   }
-
-  // Future<void> _initPackageInfo() async {
-  //   final info = await PackageInfo.fromPlatform();
-
-  //   setState(() {
-  //     _packageInfo = info;
-  //   });
-  //   // String data = await PlatformRepository.changeColor("RED");
-  //   // showSnackBar(
-  //   //     context: context,
-  //   //     snackBar: showErrorDialogue(
-  //   //         errorMessage: "compleated native methord and value is $data"));
-  // }
 }
-
-// storecurrentlocation() async {
-//   Position position = await Geolocator.getCurrentPosition(
-//       desiredAccuracy: LocationAccuracy.high);
-
-//   MapLatLng center;
-
-//   UserController.userController.locationlatitude = position.latitude.toString();
-//   UserController.userController.locationlongitude =
-//       position.longitude.toString();
-
-//   print("current location");
-
-//   print("latitude" + UserController().locationlatitude);
-//   print("longitude" + UserController().locationlongitude);
-
-//   await PreferenceUtils.storeDataToShared(
-//       "latitude", position.latitude.toString());
-
-//   await PreferenceUtils.storeDataToShared(
-//       "longitude", position.longitude.toString());
-
-//   var geocoder = GeocodingPlatform.instance;
-
-//   // try {
-//   //   List<Placemark> placemark11 = await geocoder.placemarkFromCoordinates(
-//   //       position.latitude, position.longitude);
-
-//   //   print("my Street" + placemark11.first.street.toString());
-//   //   List<Location> locations = await geocoder.locationFromAddress("Aldaayen");
-//   //   List<Placemark> placemarks = await geocoder.placemarkFromCoordinates(
-//   //       locations.first.latitude, locations.first.longitude);
-
-//   //   print("Address to latlang  latitude:" +
-//   //       locations.first.latitude.toString() +
-//   //       "  Longitude:" +
-//   //       locations.first.longitude.toString());
-
-//   //   print("street" + placemarks.first.name.toString());
-
-//   //   print("country" + placemarks.first.country.toString());
-
-//   //   print("locality" + placemarks.first.locality.toString());
-
-//   double distence = calculateDistance(locations.first.latitude,
-//       locations.first.longitude, position.latitude, position.longitude);
-
-//   //   print("distence : " + distence.toString() + "KM");
-//   // } catch (e) {
-//   //   log(e.toString(), stackTrace: StackTrace.current);
-//   //   return "";
-//   // }
-// }
 
 class ProgressIndicator extends StatefulWidget {
   final Duration duration;
   const ProgressIndicator(
-      {Key? key, this.duration = const Duration(seconds: 5)})
-      : super(key: key);
+      {super.key, this.duration = const Duration(seconds: 5)});
 
   @override
   State<ProgressIndicator> createState() => _ProgressIndicatorState();

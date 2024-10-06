@@ -11,7 +11,6 @@ import 'package:ahstock/services/service_locator.dart';
 import 'package:ahstock/theme/custom_theme.dart';
 import 'package:ahstock/user_controller/user_controller.dart';
 import 'package:ahstock/utils/utils.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -20,14 +19,14 @@ import 'package:provider/provider.dart';
 class AHSales extends StatefulWidget {
   final String initialRoute;
   ServiceLocator serviceLocator;
-  AHSales({super.key,required this.initialRoute,required this.serviceLocator});
+  AHSales(
+      {super.key, required this.initialRoute, required this.serviceLocator});
 
   @override
   State<AHSales> createState() => _AHSalesState();
 }
 
 class _AHSalesState extends State<AHSales> {
-
   final GlobalKey<NavigatorState> _navigatorKey = GlobalKey();
   late StreamSubscription<void> heartbeatSubscription;
   late StreamSubscription<void> logoutSubscription;
@@ -35,7 +34,6 @@ class _AHSalesState extends State<AHSales> {
   CustomMode themeMode = CustomMode.Light;
 
   StreamSubscription? networkSubscription;
-
 
   @override
   void initState() {
@@ -52,13 +50,12 @@ class _AHSalesState extends State<AHSales> {
     // initfirebasenavigation(context);
   }
 
-    getTheme() async {
+  getTheme() async {
     bool? storedThemeStatus = await PreferenceUtils.preferenceHasKey("theme");
 
     if (storedThemeStatus == false) {
       await PreferenceUtils.storeDataToShared(
           "theme", getThemeModeString(CustomMode.Light).toString());
-      ;
     } else {
       String? storedTheme = await PreferenceUtils.getDataFromShared("theme");
       if (storedTheme == "") {
@@ -93,13 +90,9 @@ class _AHSalesState extends State<AHSales> {
         .toggleTheme(themeMode);
   }
 
-
-
   @override
   Widget build(BuildContext context) {
-
-
-widget.serviceLocator = ServiceLocator(
+    widget.serviceLocator = ServiceLocator(
         UserController.userController.mainbaseUrl,
         UserController.userController.mainapplicationPath,
         debuggable: loggable)
@@ -110,8 +103,8 @@ widget.serviceLocator = ServiceLocator(
     ));
 
     return MultiRepositoryProvider(
-      providers: [RepositoryProvider.value(value: widget.serviceLocator)],
-      child: AppTheme(
+        providers: [RepositoryProvider.value(value: widget.serviceLocator)],
+        child: AppTheme(
             child: BlocProvider(
           create: (context) => NavigationCubit(),
           child: MaterialApp(
@@ -131,7 +124,5 @@ widget.serviceLocator = ServiceLocator(
             theme: Provider.of<CustomTheme>(context).currentTheme,
           ),
         )));
-  
-    
   }
 }

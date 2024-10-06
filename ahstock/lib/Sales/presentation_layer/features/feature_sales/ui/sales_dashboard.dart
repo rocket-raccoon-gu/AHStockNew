@@ -13,8 +13,6 @@ import 'package:barcode_scan2/platform_wrapper.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
@@ -56,7 +54,7 @@ class _SalesDashboardState extends State<SalesDashboard>
       // //     options: ScanOptions(useCamera: cameralist - 2));
 
       setState(() {
-        // barcodescanRes = result.rawContent;
+        // barcodescanRes = result.rawContent;f
         _scanBarcode = barcodescanRes!;
       });
 
@@ -103,7 +101,7 @@ class _SalesDashboardState extends State<SalesDashboard>
                           color: FontColor.FontPrimary),
                     ),
                   ),
-                  CircularProgressIndicator.adaptive(),
+                  const CircularProgressIndicator.adaptive(),
                   // Lottie.asset('assets/loading.json')
                 ],
               ),
@@ -163,7 +161,7 @@ class _SalesDashboardState extends State<SalesDashboard>
                             onPressed: () {
                               Scaffold.of(context).openDrawer();
                             },
-                            icon: Icon(Icons.menu)),
+                            icon: const Icon(Icons.menu)),
                         Padding(
                           padding: const EdgeInsets.only(left: 6.0),
                           child: Text(
@@ -221,11 +219,11 @@ class _SalesDashboardState extends State<SalesDashboard>
                       children: [
                         Text(
                             "Logged in User : ${UserController.userController.userName}"),
-                        Text("ahqa_sales")
+                        const Text("ahqa_sales")
                       ],
                     ),
                   ),
-                  Divider(
+                  const Divider(
                     thickness: 1.2,
                   )
                   // GridView.builder(
@@ -293,6 +291,8 @@ class _SalesDashboardState extends State<SalesDashboard>
 }
 
 class Clock extends StatefulWidget {
+  const Clock({super.key});
+
   @override
   _ClockState createState() => _ClockState();
 }
@@ -310,7 +310,7 @@ class _ClockState extends State<Clock> {
     setState(() {
       _currentTime = DateFormat('HH:mm:ss').format(DateTime.now());
     });
-    Future.delayed(Duration(seconds: 1), _updateTime);
+    Future.delayed(const Duration(seconds: 1), _updateTime);
   }
 
   @override

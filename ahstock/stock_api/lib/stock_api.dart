@@ -4,7 +4,6 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
-import 'dart:typed_data';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/io_client.dart';
@@ -205,7 +204,7 @@ extension StockGeneralApi on StockApi {
       'Authorization': 'Bearer $token',
     };
 
-    print("my path" + url.toString());
+    print("my path$url");
 
     return _handleRequest(
         onRequest: () => _client.get(url, headers: headers),
@@ -216,8 +215,7 @@ extension StockGeneralApi on StockApi {
 
   Future<String> checkPromotionService({required String endpoint}) async {
     final url = Uri.parse(
-        'https://admin-qatar.testuatah.com/custom-api/api/scan_barcode_percentage.php?barcode=' +
-            endpoint);
+        'https://admin-qatar.testuatah.com/custom-api/api/scan_barcode_percentage.php?barcode=$endpoint');
 
     log(url.toString());
 
@@ -235,7 +233,7 @@ extension StockGeneralApi on StockApi {
   Future<String> checkPromotionServiceRegions(
       {required String endpoint}) async {
     final url = _endpointWithApplicationCustomPath(
-        'custom-api/api/scan_barcode_percentage.php?barcode=' + endpoint);
+        'custom-api/api/scan_barcode_percentage.php?barcode=$endpoint');
 
     log(url.toString());
 
@@ -265,7 +263,7 @@ extension on StockApi {
   Uri _endpoint(String path) => baseUrl.replace(path: '${baseUrl.path}$path');
 
   String _endpointWithApplicationPathString(String path) {
-    String newpath = '${baseUrl}$applicationPath$path';
+    String newpath = '$baseUrl$applicationPath$path';
     return newpath;
   }
 
@@ -273,7 +271,7 @@ extension on StockApi {
     String abpath = '$baseUrl$path';
     // return baseUrl.replace(path: '${baseUrl.path}$applicationPath$path');
 
-    print("path" + abpath);
+    print("path$abpath");
 
     return abpath;
   }

@@ -1,7 +1,5 @@
 import 'dart:async';
 import 'dart:convert';
-import 'dart:developer';
-import 'dart:io';
 
 import 'package:ahstock/app_page_injectable.dart';
 import 'package:ahstock/Sales/presentation_layer/features/feature_splash/bloc/splash_page_cubit.dart';
@@ -10,9 +8,6 @@ import 'package:ahstock/constants/prefefence_utils.dart';
 import 'package:ahstock/theme/styles.dart';
 import 'package:ahstock/user_controller/user_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:package_info_plus/package_info_plus.dart';
@@ -35,6 +30,7 @@ class _SplashPageNewState extends State<SplashPage>
     buildSignature: 'Unknown',
   );
 
+  @override
   void initState() {
     super.initState();
 
@@ -58,15 +54,15 @@ class _SplashPageNewState extends State<SplashPage>
     print("Start time ${DateTime.now()}");
 
     if (await PreferenceUtils.preferenceHasKey('mainbaseurl')) {
-      await Future.delayed(Duration(seconds: 1));
+      await Future.delayed(const Duration(seconds: 1));
 
       String? base = await PreferenceUtils.getDataFromShared('mainbaseurl');
 
       switch (base) {
         case 'https://admin-qatar.testuatah.com/':
-  //         // Qatar region page
+          //         // Qatar region page
           if (await PreferenceUtils.preferenceHasKey("userCode")) {
-  //           // ignore: use_build_context_synchronously
+            //           // ignore: use_build_context_synchronously
             var profileres =
                 await context.gTradingApiGateway.getProfile(context);
 
@@ -96,7 +92,7 @@ class _SplashPageNewState extends State<SplashPage>
                     ProfileResponce.fromJson(userMap1);
                 UserController.userController.profileResponce = profileResponce;
 
-                print("user =" + profileResponce.user[0].name.toString());
+                print("user =${profileResponce.user[0].name}");
 
                 UserController.userController.userstat =
                     profileResponce.user[0].availabilityStatus == "0"
@@ -117,8 +113,7 @@ class _SplashPageNewState extends State<SplashPage>
                 DateTime endTime = DateTime(givenTime.year, givenTime.month,
                     givenTime.day, 23, 59); // 11:59 PM
 
-                print(
-                    DateFormat.H().format(givenTime).toString() + " time aag");
+                print("${DateFormat.H().format(givenTime)} time aag");
 
                 Map<String, dynamic> data = {"selected": 0};
 
@@ -129,21 +124,23 @@ class _SplashPageNewState extends State<SplashPage>
                         .userController.profileResponce.user[0].role ==
                     "5") {
                   // ignore: use_build_context_synchronously
-                  context.gNavigationService.openSalesMansDashboardPage(context, data);
-                // } else if (UserController
-                //         .userController.profileResponce.user[0].role ==
-                //     "7") {
-                //   // ignore: use_build_context_synchronously
-                //   context.gNavigationService
-                //       .openSalesMansDashboardPage(context, data);
-                // } else if (UserController
-                //         .userController.profileResponce.user[0].role ==
-                //     "6") {
-                //   // ignore: use_build_context_synchronously
-                //   context.gNavigationService
-                //       .openSectionInchargeHomePage(context, data);
+                  context.gNavigationService
+                      .openSalesMansDashboardPage(context, data);
+                  // } else if (UserController
+                  //         .userController.profileResponce.user[0].role ==
+                  //     "7") {
+                  //   // ignore: use_build_context_synchronously
+                  //   context.gNavigationService
+                  //       .openSalesMansDashboardPage(context, data);
+                  // } else if (UserController
+                  //         .userController.profileResponce.user[0].role ==
+                  //     "6") {
+                  //   // ignore: use_build_context_synchronously
+                  //   context.gNavigationService
+                  //       .openSectionInchargeHomePage(context, data);
                 } else {
-                  context.gNavigationService.openSalesMansDashboardPage(context, data);
+                  context.gNavigationService
+                      .openSalesMansDashboardPage(context, data);
 
                   // ignore: use_build_context_synchronously
                   // context.gNavigationService.openWorkspacePage(context, data);
@@ -237,201 +234,200 @@ class _SplashPageNewState extends State<SplashPage>
         default:
       }
 
-  //     // if (await PreferenceUtils.preferenceHasKey("userCode")) {
-  //     //   await Future.delayed(Duration(seconds: 1));
+      //     // if (await PreferenceUtils.preferenceHasKey("userCode")) {
+      //     //   await Future.delayed(Duration(seconds: 1));
 
-  //     //   String? userid11 = await PreferenceUtils.getDataFromShared("userCode");
+      //     //   String? userid11 = await PreferenceUtils.getDataFromShared("userCode");
 
-  //     //   if (userid11 == "ahuae_sales") {
-  //     //     //uae scanner page
-  //     //     Map<String, dynamic> data = {"selected": 0};
-  //     //     // ignore: use_build_context_synchronously
-  //     //     context.gNavigationService.openSalesMansDashboardPage(context, data);
-  //     //   } else {
-  //     //     // ignore: use_build_context_synchronously
-  //     //     var profileres = await context.gTradingApiGateway.getProfile(context);
+      //     //   if (userid11 == "ahuae_sales") {
+      //     //     //uae scanner page
+      //     //     Map<String, dynamic> data = {"selected": 0};
+      //     //     // ignore: use_build_context_synchronously
+      //     //     context.gNavigationService.openSalesMansDashboardPage(context, data);
+      //     //   } else {
+      //     //     // ignore: use_build_context_synchronously
+      //     //     var profileres = await context.gTradingApiGateway.getProfile(context);
 
-  //     //     if (profileres.toString().contains("HandshakeException")) {
-  //     //       print("ok");
-  //     //     } else {
-  //     //       Map<String, dynamic> userMap1 = jsonDecode(profileres!);
-  //     //       if (userMap1.containsKey('success') && userMap1['success'] == 0) {
-  //     //         //session expired
-  //     //         context.gNavigationService.openLoginPage(context);
-  //     //       } else {
-  //     //         UserController.userController.userId =
-  //     //             (await PreferenceUtils.getDataFromShared("userCode"))!;
-  //     //         UserController.userController.usertoken =
-  //     //             (await PreferenceUtils.getDataFromShared("usertoken"))!;
+      //     //     if (profileres.toString().contains("HandshakeException")) {
+      //     //       print("ok");
+      //     //     } else {
+      //     //       Map<String, dynamic> userMap1 = jsonDecode(profileres!);
+      //     //       if (userMap1.containsKey('success') && userMap1['success'] == 0) {
+      //     //         //session expired
+      //     //         context.gNavigationService.openLoginPage(context);
+      //     //       } else {
+      //     //         UserController.userController.userId =
+      //     //             (await PreferenceUtils.getDataFromShared("userCode"))!;
+      //     //         UserController.userController.usertoken =
+      //     //             (await PreferenceUtils.getDataFromShared("usertoken"))!;
 
-  //     //         String? prs =
-  //     //             await PreferenceUtils.getDataFromShared("profiledetails");
-  //     //         // String? regionurl =
-  //     //         //     await PreferenceUtils.getDataFromShared('mainbaseurl');
-  //     //         // UserController.userController.mainbaseUrl = regionurl!;
+      //     //         String? prs =
+      //     //             await PreferenceUtils.getDataFromShared("profiledetails");
+      //     //         // String? regionurl =
+      //     //         //     await PreferenceUtils.getDataFromShared('mainbaseurl');
+      //     //         // UserController.userController.mainbaseUrl = regionurl!;
 
-  //     //         // String? region = await PreferenceUtils.getDataFromShared('region');
-  //     //         // print(region);
-  //     //         // UserController.userController.region = region!;
-  //     //         // ignore: use_build_context_synchronously
-  //     //         // var profileres = await context.gTradingApiGateway.getProfile();
-  //     //         // Map<String, dynamic> userMap1 = jsonDecode(profileres!);
+      //     //         // String? region = await PreferenceUtils.getDataFromShared('region');
+      //     //         // print(region);
+      //     //         // UserController.userController.region = region!;
+      //     //         // ignore: use_build_context_synchronously
+      //     //         // var profileres = await context.gTradingApiGateway.getProfile();
+      //     //         // Map<String, dynamic> userMap1 = jsonDecode(profileres!);
 
-  //     //         ProfileResponce profileResponce =
-  //     //             ProfileResponce.fromJson(userMap1);
-  //     //         UserController.userController.profileResponce = profileResponce;
+      //     //         ProfileResponce profileResponce =
+      //     //             ProfileResponce.fromJson(userMap1);
+      //     //         UserController.userController.profileResponce = profileResponce;
 
-  //     //         print("user =" + profileResponce.user[0].name.toString());
+      //     //         print("user =" + profileResponce.user[0].name.toString());
 
-  //     //         DateTime givenTime = DateTime.now();
+      //     //         DateTime givenTime = DateTime.now();
 
-  //     //         // if (checkdayshift(givenTime, profileResponce.user.offDay)) {
-  //     //         //   print("today my offday");
-  //     //         //   final resp = await context.gTradingApiGateway.changeuserStat(
-  //     //         //     userId: int.parse(UserController().profileResponce.user.id),
-  //     //         //     status: 0,
-  //     //         //   );
-  //     //         //   Map<String, dynamic> dtb = jsonDecode(resp);
-  //     //         //   print(dtb["ok"]);
-  //     //         //   UserController.userController.dutyval = 0;
-  //     //         // } else {
-  //     //         //   print("not my offday");
-  //     //         //   // ignore: use_build_context_synchronously
-  //     //         //   final resp = await context.gTradingApiGateway.changeuserStat(
-  //     //         //     userId: int.parse(UserController().profileResponce.user.id),
-  //     //         //     status: 1,
-  //     //         //   );
-  //     //         //   Map<String, dynamic> dtb = jsonDecode(resp);
-  //     //         //   print(dtb["ok"]);
-  //     //         //   UserController.userController.dutyval = 1;
-  //     //         // }
+      //     //         // if (checkdayshift(givenTime, profileResponce.user.offDay)) {
+      //     //         //   print("today my offday");
+      //     //         //   final resp = await context.gTradingApiGateway.changeuserStat(
+      //     //         //     userId: int.parse(UserController().profileResponce.user.id),
+      //     //         //     status: 0,
+      //     //         //   );
+      //     //         //   Map<String, dynamic> dtb = jsonDecode(resp);
+      //     //         //   print(dtb["ok"]);
+      //     //         //   UserController.userController.dutyval = 0;
+      //     //         // } else {
+      //     //         //   print("not my offday");
+      //     //         //   // ignore: use_build_context_synchronously
+      //     //         //   final resp = await context.gTradingApiGateway.changeuserStat(
+      //     //         //     userId: int.parse(UserController().profileResponce.user.id),
+      //     //         //     status: 1,
+      //     //         //   );
+      //     //         //   Map<String, dynamic> dtb = jsonDecode(resp);
+      //     //         //   print(dtb["ok"]);
+      //     //         //   UserController.userController.dutyval = 1;
+      //     //         // }
 
-  //     //         // Define the start and end times for your range
-  //     //         DateTime startTime = DateTime(
-  //     //             givenTime.year,
-  //     //             givenTime.month,
-  //     //             givenTime.day,
-  //     //             int.parse(DateFormat.H().format(givenTime).toString()),
-  //     //             int.parse(
-  //     //                 DateFormat.m().format(givenTime).toString())); // 2:00 PM
-  //     //         DateTime endTime = DateTime(givenTime.year, givenTime.month,
-  //     //             givenTime.day, 23, 59); // 11:59 PM
+      //     //         // Define the start and end times for your range
+      //     //         DateTime startTime = DateTime(
+      //     //             givenTime.year,
+      //     //             givenTime.month,
+      //     //             givenTime.day,
+      //     //             int.parse(DateFormat.H().format(givenTime).toString()),
+      //     //             int.parse(
+      //     //                 DateFormat.m().format(givenTime).toString())); // 2:00 PM
+      //     //         DateTime endTime = DateTime(givenTime.year, givenTime.month,
+      //     //             givenTime.day, 23, 59); // 11:59 PM
 
-  //     //         print(DateFormat.H().format(givenTime).toString() + " time aag");
+      //     //         print(DateFormat.H().format(givenTime).toString() + " time aag");
 
-  //     //         // await Future.delayed(Duration(seconds: 5));
-  //     //         // // context.gNavigationService.openOrderPage(context);
-  //     //         Map<String, dynamic> data = {"selected": 0};
+      //     //         // await Future.delayed(Duration(seconds: 5));
+      //     //         // // context.gNavigationService.openOrderPage(context);
+      //     //         Map<String, dynamic> data = {"selected": 0};
 
-  //     //         UserController.userController.mainbaseUrl =
-  //     //             'https://admin-qatar.testuatah.com/';
+      //     //         UserController.userController.mainbaseUrl =
+      //     //             'https://admin-qatar.testuatah.com/';
 
-  //     //         // context.gNavigationService.openMapViewPage(context, data);
-  //     //         // }
+      //     //         // context.gNavigationService.openMapViewPage(context, data);
+      //     //         // }
 
-  //     //         // String response =
-  //     //         //     await context.gTradingApiGateway.generalPickerService(endpoint: "");
+      //     //         // String response =
+      //     //         //     await context.gTradingApiGateway.generalPickerService(endpoint: "");
 
-  //     //         // Map<String, dynamic> item = json.decode(response);
-  //     //         // print(response.toString());
-  //     //         // PickerResponse pickerResponse =
-  //     //         //     PickerResponse.fromJson(json.decode(response));
+      //     //         // Map<String, dynamic> item = json.decode(response);
+      //     //         // print(response.toString());
+      //     //         // PickerResponse pickerResponse =
+      //     //         //     PickerResponse.fromJson(json.decode(response));
 
-  //     //         // UsersResponce usersResponce = UsersResponce.fromJson(item);
+      //     //         // UsersResponce usersResponce = UsersResponce.fromJson(item);
 
-  //     //         // UserController.userController.driverlist = usersResponce.message.driver;
+      //     //         // UserController.userController.driverlist = usersResponce.message.driver;
 
-  //     //         // UserController.userController.pickerlist = usersResponce.message.picker;
+      //     //         // UserController.userController.pickerlist = usersResponce.message.picker;
 
-  //     //         // await Future.delayed(const Duration(seconds: 2));
+      //     //         // await Future.delayed(const Duration(seconds: 2));
 
-  //     //         // result = await NominatimGeocoding.to.reverseGeoCoding(
-  //     //         //   const Coordinate(
-  //     //         //       latitude: 52.27429313260939, longitude: 10.523078303155874),
-  //     //         // );
-  //     //         // print(result);
+      //     //         // result = await NominatimGeocoding.to.reverseGeoCoding(
+      //     //         //   const Coordinate(
+      //     //         //       latitude: 52.27429313260939, longitude: 10.523078303155874),
+      //     //         // );
+      //     //         // print(result);
 
-  //     //         if (UserController.userController.profileResponce.user[0].role ==
-  //     //             "5") {
-  //     //           // ignore: use_build_context_synchronously
-  //     //           context.gNavigationService.openNewScannerPage(context, data);
-  //     //         } else if (UserController
-  //     //                 .userController.profileResponce.user[0].role ==
-  //     //             "7") {
-  //     //           // ignore: use_build_context_synchronously
-  //     //           context.gNavigationService
-  //     //               .openSalesMansDashboardPage(context, data);
-  //     //         } else {
-  //     //           // ignore: use_build_context_synchronously
-  //     //           context.gNavigationService.openWorkspacePage(context, data);
-  //     //         }
-  //     //       }
-  //     //       String? a = await PreferenceUtils.getDataFromShared("catlist");
-  //     //       Map<String, dynamic> userMap = jsonDecode(a!);
-  //     //       CategoriesResponce categoriesResponce =
-  //     //           CategoriesResponce.fromJson(userMap);
-  //     //       UserController.userController.categorylist =
-  //     //           categoriesResponce.message;
+      //     //         if (UserController.userController.profileResponce.user[0].role ==
+      //     //             "5") {
+      //     //           // ignore: use_build_context_synchronously
+      //     //           context.gNavigationService.openNewScannerPage(context, data);
+      //     //         } else if (UserController
+      //     //                 .userController.profileResponce.user[0].role ==
+      //     //             "7") {
+      //     //           // ignore: use_build_context_synchronously
+      //     //           context.gNavigationService
+      //     //               .openSalesMansDashboardPage(context, data);
+      //     //         } else {
+      //     //           // ignore: use_build_context_synchronously
+      //     //           context.gNavigationService.openWorkspacePage(context, data);
+      //     //         }
+      //     //       }
+      //     //       String? a = await PreferenceUtils.getDataFromShared("catlist");
+      //     //       Map<String, dynamic> userMap = jsonDecode(a!);
+      //     //       CategoriesResponce categoriesResponce =
+      //     //           CategoriesResponce.fromJson(userMap);
+      //     //       UserController.userController.categorylist =
+      //     //           categoriesResponce.message;
 
-  //     //       // String? cresp =
-  //     //       //     await PreferenceUtils.getDataFromShared("colordataoption");
-  //     //       // // Map<String, dynamic> crespMap = jsonDecode(cresp!);
+      //     //       // String? cresp =
+      //     //       //     await PreferenceUtils.getDataFromShared("colordataoption");
+      //     //       // // Map<String, dynamic> crespMap = jsonDecode(cresp!);
 
-  //     //       // List<ItemColorResponse> itemcolorresplist =
-  //     //       //     itemColorResponseFromJson(cresp!);
+      //     //       // List<ItemColorResponse> itemcolorresplist =
+      //     //       //     itemColorResponseFromJson(cresp!);
 
-  //     //       // String? sizeresp =
-  //     //       //     await PreferenceUtils.getDataFromShared("sizedataoption");
-  //     //       // Map<String, dynamic> crespMap = jsonDecode(cresp!);
+      //     //       // String? sizeresp =
+      //     //       //     await PreferenceUtils.getDataFromShared("sizedataoption");
+      //     //       // Map<String, dynamic> crespMap = jsonDecode(cresp!);
 
-  //     //       // final itemresp =
-  //     //       //     await context.gTradingApiGateway.tradingApi.getItemSizeResponse();
+      //     //       // final itemresp =
+      //     //       //     await context.gTradingApiGateway.tradingApi.getItemSizeResponse();
 
-  //     //       // // Map<String, dynamic> responcemap = jsonDecode(itemresp);
+      //     //       // // Map<String, dynamic> responcemap = jsonDecode(itemresp);
 
-  //     //       // List<ItemSizeResponse> itemresplist = itemSizeResponseFromJson(sizeresp!);
+      //     //       // List<ItemSizeResponse> itemresplist = itemSizeResponseFromJson(sizeresp!);
 
-  //     //       // final itemcolorresp =
-  //     //       //     await context.gTradingApiGateway.tradingApi.getItemColorResponse();
+      //     //       // final itemcolorresp =
+      //     //       //     await context.gTradingApiGateway.tradingApi.getItemColorResponse();
 
-  //     //       // List<ItemColorResponse> itemcolorresplist =
-  //     //       //     itemColorResponseFromJson(itemcolorresp);
+      //     //       // List<ItemColorResponse> itemcolorresplist =
+      //     //       //     itemColorResponseFromJson(itemcolorresp);
 
-  //     //       // print(itemresplist[1].value);
-  //     //       // print(itemcolorresplist[1].value);
-  //     //       // UserController.userController.itemresplist = itemresplist;
-  //     //       // UserController.userController.itemcolorresplist = itemcolorresplist;
-  //     //     }
-  //     //   }
-  //     // } else {
-  //     //   await Future.delayed(Duration(seconds: 2));
-  //     //   log(".....................okokok");
-  //     //   // ignore: use_build_context_synchronously
-  //     //   context.gNavigationService.openLoginPage(context);
-  //     //   // if (await PreferenceUtils.preferenceHasKey("mainbaseurl")) {
-  //     //   //   String? regionurl =
-  //     //   //       await PreferenceUtils.getDataFromShared('mainbaseurl');
+      //     //       // print(itemresplist[1].value);
+      //     //       // print(itemcolorresplist[1].value);
+      //     //       // UserController.userController.itemresplist = itemresplist;
+      //     //       // UserController.userController.itemcolorresplist = itemcolorresplist;
+      //     //     }
+      //     //   }
+      //     // } else {
+      //     //   await Future.delayed(Duration(seconds: 2));
+      //     //   log(".....................okokok");
+      //     //   // ignore: use_build_context_synchronously
+      //     //   context.gNavigationService.openLoginPage(context);
+      //     //   // if (await PreferenceUtils.preferenceHasKey("mainbaseurl")) {
+      //     //   //   String? regionurl =
+      //     //   //       await PreferenceUtils.getDataFromShared('mainbaseurl');
 
-  //     //   //   String? region =
-  //     //   //       await await PreferenceUtils.getDataFromShared('region');
-  //     //   //   print(region);
-  //     //   //   UserController.userController.region = region!;
-  //     //   //   print("end time ${DateTime.now()}");
+      //     //   //   String? region =
+      //     //   //       await await PreferenceUtils.getDataFromShared('region');
+      //     //   //   print(region);
+      //     //   //   UserController.userController.region = region!;
+      //     //   //   print("end time ${DateTime.now()}");
 
-  //     //   //   if (regionurl.isEmpty) {
-  //     //   //     context.gNavigationService.openselectCountryPage(context);
-  //     //   //   } else {
-  //     //   //     context.gNavigationService.openLoginPage(context);
-  //     //   //   }
-  //     //   // } else {
-  //     //   //   context.gNavigationService.openselectCountryPage(context);
-  //     //   // }
-  //     // }
-  //   } else {
-  //     // need to select region
-
+      //     //   //   if (regionurl.isEmpty) {
+      //     //   //     context.gNavigationService.openselectCountryPage(context);
+      //     //   //   } else {
+      //     //   //     context.gNavigationService.openLoginPage(context);
+      //     //   //   }
+      //     //   // } else {
+      //     //   //   context.gNavigationService.openselectCountryPage(context);
+      //     //   // }
+      //     // }
+      //   } else {
+      //     // need to select region
     } else {
-        // need to select region
+      // need to select region
 
       // ignore: use_build_context_synchronously
       context.gNavigationService.openSelectRegionsPage(context, {});
@@ -620,8 +616,6 @@ class _SplashPageNewState extends State<SplashPage>
   Widget build(BuildContext context) {
     double mheight = MediaQuery.of(context).size.height * 1.222;
 
-    
-
     return Scaffold(
       body: BlocBuilder<SplashInitialPageCubit, SplashInitialPageState>(
           builder: (context, state) {
@@ -653,8 +647,6 @@ class _SplashPageNewState extends State<SplashPage>
         );
       }),
     );
-  
-  
   }
 }
 

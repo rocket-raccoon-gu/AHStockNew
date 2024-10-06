@@ -2,8 +2,6 @@ import 'package:ahstock/constants/prefefence_utils.dart';
 import 'package:ahstock/theme/styles.dart';
 import 'package:ahstock/user_controller/user_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 
 import '../../../repository_layer/more_content.dart';
 
@@ -22,7 +20,7 @@ class _SelectRegionPageState extends State<SelectRegionPage> {
         Container(
           height: double.infinity,
           width: MediaQuery.of(context).size.width,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             image: DecorationImage(
               image: AssetImage('assets/bg.png'), // <-- BACKGROUND IMAGE
               fit: BoxFit.cover,
@@ -88,7 +86,7 @@ class _SelectRegionPageState extends State<SelectRegionPage> {
                               // context.gNavigationService
                               //     .openWorkspacePage(context, data);
                               UserController.userController.mainbaseUrl =
-                                  String.fromEnvironment('BASE_URL',
+                                  const String.fromEnvironment('BASE_URL',
                                       defaultValue:
                                           "https://admin-qatar.testuatah.com/");
                               await PreferenceUtils.storeDataToShared(
@@ -108,7 +106,7 @@ class _SelectRegionPageState extends State<SelectRegionPage> {
                             child: InkWell(
                               onTap: () async {
                                 UserController.userController.mainbaseUrl =
-                                    String.fromEnvironment('BASE_URL',
+                                    const String.fromEnvironment('BASE_URL',
                                         defaultValue:
                                             "https://bahrain.ahmarket.com/");
                                 await PreferenceUtils.storeDataToShared(
@@ -139,7 +137,7 @@ class _SelectRegionPageState extends State<SelectRegionPage> {
                                 // context.gNavigationService
                                 //     .openWorkspacePage(context, data);
                                 UserController.userController.mainbaseUrl =
-                                    String.fromEnvironment('BASE_URL',
+                                    const String.fromEnvironment('BASE_URL',
                                         defaultValue:
                                             "https://uae.ahmarket.com/");
                                 await PreferenceUtils.storeDataToShared(
@@ -163,7 +161,7 @@ class _SelectRegionPageState extends State<SelectRegionPage> {
                                   // context.gNavigationService
                                   //     .openWorkspacePage(context, data);
                                   UserController.userController.mainbaseUrl =
-                                      String.fromEnvironment('BASE_URL',
+                                      const String.fromEnvironment('BASE_URL',
                                           defaultValue:
                                               "https://oman.ahmarket.com/");
                                   await PreferenceUtils.storeDataToShared(

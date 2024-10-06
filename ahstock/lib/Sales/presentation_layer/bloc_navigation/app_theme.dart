@@ -6,8 +6,7 @@ class AppTheme extends InheritedWidget {
   // ThemeData currentTheme = light();
   // ModelTheme modelTheme = lightModel;
 
-  const AppTheme({Key? key, required Widget child})
-      : super(key: key, child: child);
+  const AppTheme({super.key, required super.child});
 
   static AppTheme of(BuildContext context) {
     return context.dependOnInheritedWidgetOfExactType<AppTheme>()!;

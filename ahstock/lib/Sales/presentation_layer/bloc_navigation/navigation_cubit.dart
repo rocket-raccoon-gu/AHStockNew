@@ -8,8 +8,8 @@ class NavigationCubit extends Cubit<NavigationState> {
   late Stream timer;
   DateTime current = DateTime.now();
   NavigationCubit() : super(WatchlistIndexState()) {
-    timer = Stream.periodic(Duration(seconds: 1), (i) {
-      current = current.add(Duration(seconds: 1));
+    timer = Stream.periodic(const Duration(seconds: 1), (i) {
+      current = current.add(const Duration(seconds: 1));
       return current;
     });
   }

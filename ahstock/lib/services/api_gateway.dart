@@ -1,8 +1,4 @@
 import 'dart:async';
-import 'dart:convert';
-import 'dart:developer';
-import 'dart:io';
-import 'dart:typed_data';
 
 import 'package:ahstock/constants/prefefence_utils.dart';
 import 'package:ahstock/services/authentication_service.dart';
@@ -175,8 +171,6 @@ class StockApiGateway implements AuthenticationService {
     });
     return response;
   }
-  
-  
 
   @override
   Future loginOtherREgion(
@@ -1255,5 +1249,4 @@ class StockApiGateway implements AuthenticationService {
   //     return "Retry";
   //   }
   // }
-
 }

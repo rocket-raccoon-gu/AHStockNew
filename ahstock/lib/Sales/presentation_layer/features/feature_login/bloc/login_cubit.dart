@@ -6,7 +6,6 @@ import 'package:ahstock/theme/styles.dart';
 import 'package:ahstock/user_controller/user_controller.dart';
 import 'package:ahstock/utils/user_settings.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:stock_api/responses/profile_response.dart';
@@ -56,182 +55,7 @@ class LoginCubit extends Cubit<LoginState> {
       }
     }
     try {
-      // uae sales............................................
-
-      // if (userid == "ahuae_sales" ||
-      //     userid == "ahoman_sales" ||
-      //     userid == "ahbahrain_sales") {
-      //   // oman sales...........................................
-
-      //   print("hi");
-
-      //   final responce = await serviceLocator.tradingApi
-      //       .loginOtherREgion(userId: userid, password: password);
-
-      //   if (responce.statusCode == 200) {
-      //     updateusercontroller(userId: userid, username: userid);
-      //     // Map jsonUser = jsonDecode(responce.body);
-
-      //     if (UserController.userController.mainbaseUrl ==
-      //         "https://uae.ahmarket.com/") {
-      //       UserController.userController.userName = "ahuae_sales";
-      //     } else if (UserController.userController.mainbaseUrl ==
-      //         "https://oman.ahmarket.com/") {
-      //       UserController.userController.userName = "ahoman_sales";
-      //     } else if (UserController.userController.mainbaseUrl ==
-      //         "https://bahrain.ahmarket.com/") {
-      //       UserController.userController.userName = "ahbahrain_sales";
-      //     }
-
-      //     Map<String, dynamic> data = {"selected": 0};
-
-      //     emit(LoginInitial(
-      //         errorMessage: "Login Success",
-      //         errorcode: responce.statusCode.toString()));
-      //     // serviceLocator.navigationService.openOrderPage(context);
-
-      //     serviceLocator.navigationService
-      //         .openSalesMansDashboardPage(context, data);
-      //     // } else {
-      //     //   emit(LoginInitial(
-      //     //       errorMessage: "Login Failed Try Again !",
-      //     //       errorcode: responce.statusCode.toString()));
-      //     //   return false;
-      //     // }
-      //   } else {
-      //     emit(LoginInitial(
-      //         errorMessage: "Login Failed Try Again !",
-      //         errorcode: responce.statusCode.toString()));
-      //     return false;
-      //   }
-      //   return false;
-      // } else {
-      //   //qatar sales.........................................
-
-      //   final responce = await serviceLocator.tradingApi.loginRequest(
-      //       userId: userid, password: password, version: packageInfo.version);
-
-      //   if (responce.statusCode == 200) {
-      //     updateusercontroller(userId: userid, username: userid);
-      //     Map jsonUser = jsonDecode(responce.body);
-
-      //     if (jsonUser['success'] == 1) {
-      //       UserController.userController.usertoken = jsonUser['token'];
-      //       print(jsonUser['token']);
-      //       await PreferenceUtils.storeDataToShared(
-      //           "usertoken", jsonUser['token']);
-      //       var profileres =
-      //           await serviceLocator.tradingApi.getProfile(context);
-
-      //       Map<String, dynamic> profileitems = json.decode(profileres);
-      //       ProfileResponce profileResponce =
-      //           ProfileResponce.fromJson(profileitems);
-
-      //       await PreferenceUtils.storeDataToShared(
-      //           "profiledetails", jsonEncode(profileResponce));
-      //       UserController.userController.profileResponce = profileResponce;
-      //       await gettoken(serviceLocator, packageInfo);
-
-      //       UserController.userController.mainbaseUrl =
-      //           'https://admin-qatar.testuatah.com/';
-
-      //       UserController.userController.dutyval =
-      //           int.parse(profileResponce.user[0].availabilityStatus);
-
-      //       await PreferenceUtils.storeDataToShared("dutyval", "1");
-
-      //       emit(LoginInitial(
-      //           errorMessage: "Login Success",
-      //           errorcode: responce.statusCode.toString()));
-      //       // serviceLocator.navigationService.openOrderPage(context);
-
-      //       Map<String, dynamic> data = {"selected": 0};
-      //       if (profileResponce.user[0].role == "5") {
-      //         serviceLocator.navigationService
-      //             .openNewScannerPage(context, data);
-      //       } else if (profileResponce.user[0].role == "7") {
-      //         serviceLocator.navigationService
-      //             .openSalesMansDashboardPage(context, data);
-      //       } else {
-      //         serviceLocator.navigationService.openWorkspacePage(context, data);
-      //       }
-      //     } else {
-      //       showGeneralDialog(
-      //         context: context,
-      //         barrierDismissible: true,
-      //         barrierLabel: "",
-      //         pageBuilder: (context, animation, secondaryanimation) {
-      //           return Container();
-      //         },
-      //         transitionBuilder:
-      //             (context, animation, secondaryAnimation, child) {
-      //           var curve = Curves.easeInOut.transform(animation.value);
-
-      //           return Transform.scale(
-      //             scale: curve,
-      //             child: AlertDialog(
-      //               shape: RoundedRectangleBorder(
-      //                   borderRadius: BorderRadius.circular(8.0)),
-      //               content: Column(
-      //                 mainAxisSize: MainAxisSize.min,
-      //                 mainAxisAlignment: MainAxisAlignment.center,
-      //                 children: [
-      //                   Lottie.asset('assets/update_error.json', height: 100.0),
-      //                   Row(
-      //                     children: [
-      //                       Expanded(
-      //                         child: Text(
-      //                           "Your Account Was Disabled Please Contact With Admin..!",
-      //                           textAlign: TextAlign.center,
-      //                           style: customTextStyle(
-      //                               fontStyle: FontStyle.BodyL_Bold,
-      //                               color: FontColor.Danger),
-      //                         ),
-      //                       ),
-      //                     ],
-      //                   ),
-      //                   Padding(
-      //                     padding: const EdgeInsets.only(top: 8.0),
-      //                     child: InkWell(
-      //                       onTap: () {
-      //                         Navigator.pop(context);
-      //                       },
-      //                       child: Container(
-      //                         padding:
-      //                             const EdgeInsets.symmetric(vertical: 13.0),
-      //                         decoration: BoxDecoration(
-      //                             color: customColors().carnationRed,
-      //                             borderRadius: BorderRadius.circular(5.0)),
-      //                         child: Center(
-      //                           child: Text(
-      //                             "OK",
-      //                             style: customTextStyle(
-      //                                 fontStyle: FontStyle.BodyM_Bold,
-      //                                 color: FontColor.White),
-      //                           ),
-      //                         ),
-      //                       ),
-      //                     ),
-      //                   )
-      //                 ],
-      //               ),
-      //             ),
-      //           );
-      //         },
-      //       );
-      //     }
-
       getBaseLogin(userid, password, packageInfo);
-
-      // if (userid == "ahqa_sales" && password == "sales@2024") {
-      //   Map<String, dynamic> mapdata = {"selected": 0};
-
-      //   emit(LoginInitial(errorMessage: "Login Success", errorcode: ""));
-      //   // serviceLocator.navigationService.openOrderPage(context);
-
-      //   serviceLocator.navigationService
-      //       .openSalesMansDashboardPage(context, mapdata);
-      // }
 
       return true;
       //   } else {
@@ -375,9 +199,7 @@ class LoginCubit extends Cubit<LoginState> {
 
             await PreferenceUtils.storeDataToShared("dutyval", "1");
 
-            emit(LoginInitial(
-                errorMessage: "Login Success",
-                errorcode: responce.statusCode.toString()));
+            emit(LoginInitial(errorMessage: "Login Success", errorcode: "200"));
             // serviceLocator.navigationService.openOrderPage(context);
 
             Map<String, dynamic> data = {"selected": 0};
