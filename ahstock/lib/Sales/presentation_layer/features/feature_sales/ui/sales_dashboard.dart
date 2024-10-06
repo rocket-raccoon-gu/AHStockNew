@@ -54,7 +54,7 @@ class _SalesDashboardState extends State<SalesDashboard>
       // //     options: ScanOptions(useCamera: cameralist - 2));
 
       setState(() {
-        // barcodescanRes = result.rawContent;
+        // barcodescanRes = result.rawContent;f
         _scanBarcode = barcodescanRes!;
       });
 

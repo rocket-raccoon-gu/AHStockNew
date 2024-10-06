@@ -87,12 +87,36 @@ class SalesDashBoradPageCubit extends Cubit<SalesDashBoardPageState> {
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 8.0),
                         child: Text(
-                          "Oh No, This Item Not In The Promotion",
+                          "Oh No, This Item Not In The Promotion Do you want to add ?",
                           textAlign: TextAlign.center,
                           style: customTextStyle(
                               fontStyle: FontStyle.BodyL_Bold,
                               color: FontColor.FontPrimary),
                         ),
+                      ),
+
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Container(
+                            padding: EdgeInsets.symmetric(
+                                vertical: 15.0, horizontal: 15.0),
+                            decoration: BoxDecoration(
+                                color: customColors().carnationRed),
+                            child: Center(
+                              child: Text("Cancel"),
+                            ),
+                          ),
+                          Container(
+                            padding: EdgeInsets.symmetric(
+                                vertical: 15.0, horizontal: 15.0),
+                            decoration: BoxDecoration(
+                                color: customColors().secretGarden),
+                            child: Center(
+                              child: Text("OK"),
+                            ),
+                          )
+                        ],
                       )
                     ],
                   ),
@@ -287,12 +311,47 @@ class SalesDashBoradPageCubit extends Cubit<SalesDashBoardPageState> {
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 8.0),
                         child: Text(
-                          "Oh No, This Item Not In The Promotion",
+                          "Oh No, This Item Not In The Promotion, Do you want to add...?",
                           textAlign: TextAlign.center,
                           style: customTextStyle(
                               fontStyle: FontStyle.BodyL_Bold,
                               color: FontColor.FontPrimary),
                         ),
+                      ),
+
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          InkWell(
+                            onTap: () {
+                              Navigator.pop(context);
+                            },
+                            child: Container(
+                              padding: EdgeInsets.symmetric(
+                                  vertical: 18.0, horizontal: 12.0),
+                              decoration: BoxDecoration(
+                                  color: customColors().carnationRed),
+                              child: Center(
+                                child: Text("Cancel"),
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 15.0),
+                            child: InkWell(
+                              onTap: () {},
+                              child: Container(
+                                padding: EdgeInsets.symmetric(
+                                    vertical: 18.0, horizontal: 12.0),
+                                decoration: BoxDecoration(
+                                    color: customColors().secretGarden),
+                                child: Center(
+                                  child: Text("OK"),
+                                ),
+                              ),
+                            ),
+                          )
+                        ],
                       )
                     ],
                   ),
