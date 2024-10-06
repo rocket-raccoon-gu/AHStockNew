@@ -2,8 +2,6 @@ import 'package:ahstock/constants/prefefence_utils.dart';
 import 'package:ahstock/theme/styles.dart';
 import 'package:ahstock/user_controller/user_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 
 import '../../../repository_layer/more_content.dart';
 

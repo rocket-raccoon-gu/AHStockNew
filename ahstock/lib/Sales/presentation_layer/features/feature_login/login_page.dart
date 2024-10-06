@@ -7,7 +7,6 @@ import 'package:ahstock/user_controller/user_controller.dart';
 import 'package:ahstock/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
@@ -94,16 +93,11 @@ class _LoginPageState extends State<LoginPage> {
         body: BlocConsumer<LoginCubit, LoginState>(
           listener: (context, state) {
             if (state is LoginInitial) {
-              if (state.errorcode != "200") {
+              if (state.errorcode == "200") {
                 showSnackBar(
                     context: context,
-                    snackBar: showSuccessDialogue(message: state.errorMessage));
+                    snackBar: showSuccessDialogue(message: "Login Success"));
               }
-              //else {
-              //   showSnackBar(
-              //       context: context,
-              //       snackBar: showSuccessDialogue(message: "Login Success"));
-              // }
             }
           },
           builder: (context, state) {
@@ -122,21 +116,6 @@ class _LoginPageState extends State<LoginPage> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           // ignore: prefer_const_literals_to_create_immutables
                           children: [
-                            //                         Padding(
-                            //                           padding: const EdgeInsets.only(top: 40.0),
-                            //                           child: InkWell(
-                            //                             onTap: () async {
-                            //                               context.gNavigationService
-                            //                                   .openSignupPage(context, {});
-                            //                             },
-                            //                             child: Text(
-                            //                               "Create New Account",
-                            //                               style: customTextStyle(
-                            //                                   fontStyle: FontStyle.BodyL_Bold,
-                            //                                   color: FontColor.DodgerBlue),
-                            //                             ),
-                            //                           ),
-                            //                         ),
                             Padding(
                               padding: const EdgeInsets.only(top: 95),
                               child: SizedBox(
@@ -213,48 +192,6 @@ class _LoginPageState extends State<LoginPage> {
                                         },
                                       ),
                                     ),
-                                    // Padding(
-                                    //   padding: const EdgeInsets.only(
-                                    //       top: 10, right: 16.0, left: 16.0),
-                                    //   child: Row(
-                                    //     mainAxisAlignment:
-                                    //         MainAxisAlignment.end,
-                                    //     children: [
-                                    //       InkWell(
-                                    //         onTap: () {
-                                    //           // Navigator.push(
-                                    //           //     context,
-                                    //           //     PageRouteBuilder(
-                                    //           //         transitionDuration:
-                                    //           //             const Duration(seconds: 1),
-                                    //           //         pageBuilder: (BuildContext context,
-                                    //           //             Animation<double> animation,
-                                    //           //             Animation<double>
-                                    //           //                 secondAnimation) {
-                                    //           //           return SlideTransition(
-                                    //           //               position: Tween<Offset>(
-                                    //           //                 begin:
-                                    //           //                     const Offset(100, 0.0),
-                                    //           //                 end: Offset.zero,
-                                    //           //               ).animate(animation),
-                                    //           //               child: CustomWebviewPage(
-                                    //           //                   title: "Forgot Password",
-                                    //           //                   urlAddress: CommonUrls
-                                    //           //                       .forgotPasswordUrl));
-                                    //           //         }));
-                                    //         },
-                                    //         child: Text(
-                                    //           "Forgot Password",
-                                    //           style: customTextStyle(
-                                    //               fontStyle:
-                                    //                   FontStyle.BodyM_SemiBold,
-                                    //               color: FontColor.Primary),
-                                    //         ),
-                                    //       ),
-                                    //     ],
-                                    //   ),
-                                    // ),
-
                                     Padding(
                                       padding: EdgeInsets.only(
                                           top: mheight * .040,
@@ -341,73 +278,7 @@ class _LoginPageState extends State<LoginPage> {
           },
         ));
   }
-
-  // Future<void> _initPackageInfo() async {
-  //   final info = await PackageInfo.fromPlatform();
-
-  //   setState(() {
-  //     _packageInfo = info;
-  //   });
-  //   // String data = await PlatformRepository.changeColor("RED");
-  //   // showSnackBar(
-  //   //     context: context,
-  //   //     snackBar: showErrorDialogue(
-  //   //         errorMessage: "compleated native methord and value is $data"));
-  // }
 }
-
-// storecurrentlocation() async {
-//   Position position = await Geolocator.getCurrentPosition(
-//       desiredAccuracy: LocationAccuracy.high);
-
-//   MapLatLng center;
-
-//   UserController.userController.locationlatitude = position.latitude.toString();
-//   UserController.userController.locationlongitude =
-//       position.longitude.toString();
-
-//   print("current location");
-
-//   print("latitude" + UserController().locationlatitude);
-//   print("longitude" + UserController().locationlongitude);
-
-//   await PreferenceUtils.storeDataToShared(
-//       "latitude", position.latitude.toString());
-
-//   await PreferenceUtils.storeDataToShared(
-//       "longitude", position.longitude.toString());
-
-//   var geocoder = GeocodingPlatform.instance;
-
-//   // try {
-//   //   List<Placemark> placemark11 = await geocoder.placemarkFromCoordinates(
-//   //       position.latitude, position.longitude);
-
-//   //   print("my Street" + placemark11.first.street.toString());
-//   //   List<Location> locations = await geocoder.locationFromAddress("Aldaayen");
-//   //   List<Placemark> placemarks = await geocoder.placemarkFromCoordinates(
-//   //       locations.first.latitude, locations.first.longitude);
-
-//   //   print("Address to latlang  latitude:" +
-//   //       locations.first.latitude.toString() +
-//   //       "  Longitude:" +
-//   //       locations.first.longitude.toString());
-
-//   //   print("street" + placemarks.first.name.toString());
-
-//   //   print("country" + placemarks.first.country.toString());
-
-//   //   print("locality" + placemarks.first.locality.toString());
-
-//   double distence = calculateDistance(locations.first.latitude,
-//       locations.first.longitude, position.latitude, position.longitude);
-
-//   //   print("distence : " + distence.toString() + "KM");
-//   // } catch (e) {
-//   //   log(e.toString(), stackTrace: StackTrace.current);
-//   //   return "";
-//   // }
-// }
 
 class ProgressIndicator extends StatefulWidget {
   final Duration duration;
