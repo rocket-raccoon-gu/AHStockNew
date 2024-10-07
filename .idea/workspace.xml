@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="dffc4160-958c-4bad-b3d2-6b83dc40303e" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/ahstock/lib/Sales/presentation_layer/features/feature_it/bloc/it_dashboard_page_cubit.dart" beforeDir="false" afterPath="$PROJECT_DIR$/ahstock/lib/Sales/presentation_layer/features/feature_it/bloc/it_dashboard_page_cubit.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ahstock/lib/Sales/presentation_layer/features/feature_it/bloc/it_dashboard_page_state.dart" beforeDir="false" afterPath="$PROJECT_DIR$/ahstock/lib/Sales/presentation_layer/features/feature_it/bloc/it_dashboard_page_state.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ahstock/lib/Sales/presentation_layer/features/feature_it/ui/it_dashboard_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/ahstock/lib/Sales/presentation_layer/features/feature_it/ui/it_dashboard_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ahstock/lib/Sales/presentation_layer/features/feature_login/bloc/login_cubit.dart" beforeDir="false" afterPath="$PROJECT_DIR$/ahstock/lib/Sales/presentation_layer/features/feature_login/bloc/login_cubit.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ahstock/lib/app_routes_factory.dart" beforeDir="false" afterPath="$PROJECT_DIR$/ahstock/lib/app_routes_factory.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ahstock/lib/navigation/navigation_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/ahstock/lib/navigation/navigation_service.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ahstock/lib/navigation/routes_factory.dart" beforeDir="false" afterPath="$PROJECT_DIR$/ahstock/lib/navigation/routes_factory.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ahstock/lib/navigation/routes_mapper.dart" beforeDir="false" afterPath="$PROJECT_DIR$/ahstock/lib/navigation/routes_mapper.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ahstock/lib/navigation/routes_names.dart" beforeDir="false" afterPath="$PROJECT_DIR$/ahstock/lib/navigation/routes_names.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ahstock/lib/services/api_gateway.dart" beforeDir="false" afterPath="$PROJECT_DIR$/ahstock/lib/services/api_gateway.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ahstock/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/ahstock/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ahstock/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/ahstock/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ahstock/stock_api/lib/stock_api.dart" beforeDir="false" afterPath="$PROJECT_DIR$/ahstock/stock_api/lib/stock_api.dart" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 2
+}]]></component>
+  <component name="ProjectId" id="2n6WLFcWFV3DRZMxdV9y570eA8a" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "git-widget-placeholder": "haris__dev",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/ansar/Documents/development/AHStockNew"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="dffc4160-958c-4bad-b3d2-6b83dc40303e" name="Changes" comment="" />
+      <created>1728293947636</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1728293947636</updated>
+    </task>
+    <servers />
+  </component>
+</project>

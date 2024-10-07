@@ -203,7 +203,10 @@ class LoginCubit extends Cubit<LoginState> {
             // serviceLocator.navigationService.openOrderPage(context);
 
             Map<String, dynamic> data = {"selected": 0};
-            if (profileResponce.user[0].role == "5") {
+            if (profileResponce.user[0].empId == "agqa_itdpt") {
+              serviceLocator.navigationService
+                  .openItDashBoardPage(context, mapdata);
+            } else if (profileResponce.user[0].role == "5") {
               serviceLocator.navigationService
                   .openNewScannerPage(context, data);
             } else if (profileResponce.user[0].role == "7") {

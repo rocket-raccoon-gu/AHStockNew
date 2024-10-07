@@ -21,6 +21,13 @@ class NavigationService {
         arguments: MapArguments(data));
   }
 
+  Future<void> openItDashBoardPage(
+      BuildContext context, Map<String, dynamic> data) {
+    return Navigator.of(context).pushNamedAndRemoveUntil(
+        _itDashboardPageRouteName, (Route<dynamic> route) => false,
+        arguments: MapArguments(data));
+  }
+
   // Future<void> openOrderPage(BuildContext context) {
   //   return Navigator.of(context).pushNamedAndRemoveUntil(
   //       _orderPageRouteName, (Route<dynamic> route) => false);

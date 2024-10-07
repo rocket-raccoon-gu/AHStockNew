@@ -247,6 +247,40 @@ extension StockGeneralApi on StockApi {
           return response.body;
         });
   }
+
+  Future<String> checkItDataService({required String endpoint}) async {
+    final url = Uri.parse(
+        'https://testuatah.com/itdepartment/scan-sku.php?sku=$endpoint');
+
+    log(url.toString());
+
+    final Map<String, String> headers = {
+      'Content-Type': ContentTypes.applicationCharset
+    };
+
+    return _handleRequest(
+        onRequest: () => _client.get(url),
+        onResponse: (response) {
+          return response.body;
+        });
+  }
+
+  Future<http.Response> updateDashboardEntry(
+      {required List<Map<String, dynamic>> data}) async {
+    final uri =
+        Uri.parse('https://testuatah.com/itdepartment/update-product.php');
+
+    final Map<String, String> headers = {
+      'Content-Type': ContentTypes.applicationCharset
+    };
+
+    return _handleRequest(
+        onRequest: () =>
+            _client.post(uri, headers: headers, body: jsonEncode(data)),
+        onResponse: (response) {
+          return response;
+        });
+  }
 }
 
 extension on StockApi {

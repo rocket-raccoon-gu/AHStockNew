@@ -491,6 +491,39 @@ class StockApiGateway implements AuthenticationService {
   }
 
   // @override
+  Future itDashboardService({required String endpoint}) async {
+    try {
+      final response = await tradingApi
+          .checkItDataService(endpoint: endpoint)
+          .catchError((e) {
+        networkStreamController.sink.add(e.toString());
+        throw e;
+      });
+
+      return response;
+    } catch (e) {
+      serviceSendError("general It Dashboard Service");
+      return "";
+    }
+  }
+
+  Future itDashboardEntryService(
+      {required List<Map<String, dynamic>> data}) async {
+    try {
+      final response =
+          await tradingApi.updateDashboardEntry(data: data).catchError((e) {
+        networkStreamController.sink.add(e.toString());
+        throw e;
+      });
+
+      return response;
+    } catch (e) {
+      serviceSendError("general It Dashboard Service");
+      return "";
+    }
+  }
+
+  // @override
   // Future generalOrderService({required String endpoint}) async {
   //   String? token11 = await PreferenceUtils.getDataFromShared("usertoken");
   //   return await tradingApi

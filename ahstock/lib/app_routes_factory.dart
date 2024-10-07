@@ -1,3 +1,4 @@
+import 'package:ahstock/Sales/presentation_layer/features/feature_it/it_dashboard_page_route_builder.dart';
 import 'package:ahstock/Sales/presentation_layer/features/feature_login/login_page_rootbuilder.dart';
 import 'package:ahstock/Sales/presentation_layer/features/feature_region/select_region_page_route_builder.dart';
 import 'package:ahstock/Sales/presentation_layer/features/feature_sales/sales_dashboard_page_route_builder.dart';
@@ -195,6 +196,13 @@ class AppRoutesFactory extends RoutesFactory {
   Route createWorkspacePageRoute(Map<String, dynamic> data) {
     // TODO: implement createWorkspacePageRoute
     throw UnimplementedError();
+  }
+
+  @override
+  Route createItDashBoardPsgrRoute(Map<String, dynamic> data) {
+    // TODO: implement createItDashBoardPsgrRoute
+    return CustomRoute(
+        builder: ItDashboardPageRouteBuilder(_serviceLocator, data));
   }
 }
 

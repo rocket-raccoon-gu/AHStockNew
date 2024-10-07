@@ -34,4 +34,5 @@ abstract class RoutesFactory {
   Route<dynamic> createSelectRegionPageRoute(Map<String, dynamic> data);
   Route<dynamic> createSectionInchargePageRoute(Map<String, dynamic> data);
   Route<dynamic> createSignupPageRoute(Map<String, dynamic> data);
+  Route<dynamic> createItDashBoardPsgrRoute(Map<String, dynamic> data);
 }

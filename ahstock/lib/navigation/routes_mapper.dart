@@ -97,6 +97,9 @@ Route<dynamic>? Function(RouteSettings settings) onGenerateAppRoute(
       case _signupPageRouteName:
         final arg = settings.arguments as MapArguments;
         return routesFactory.createSignupPageRoute(arg.data);
+      case _itDashboardPageRouteName:
+        final arg = settings.arguments as MapArguments;
+        return routesFactory.createItDashBoardPsgrRoute(arg.data);
       default:
         return null;
     }

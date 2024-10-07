@@ -45,3 +45,4 @@ const _productDetailsPageRouteName = "productdetailspageroutename";
 const _selectRegionPageRouteName = "selectregionpageroutename";
 const _sectionInChargePageRouteName = "sectionInchargepageroutename";
 const _signupPageRouteName = "signuppageroutename";
+const _itDashboardPageRouteName = "itdashboardpageroutename";
