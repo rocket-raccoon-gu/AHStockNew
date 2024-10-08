@@ -121,6 +121,10 @@ class _SplashPageNewState extends State<SplashPage>
                     'https://admin-qatar.testuatah.com/';
 
                 if (UserController
+                        .userController.profileResponce.user[0].empId ==
+                    "agqa_itdpt") {
+                  context.gNavigationService.openItDashBoardPage(context, data);
+                } else if (UserController
                         .userController.profileResponce.user[0].role ==
                     "5") {
                   // ignore: use_build_context_synchronously

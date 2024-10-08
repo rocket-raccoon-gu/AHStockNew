@@ -64,6 +64,7 @@ class _ItDashboardPageState extends State<ItDashboardPage>
       log(_scanBarcode);
     } on PlatformException {
       barcodescanRes = 'Failed to read barcode';
+      log(barcodescanRes);
     }
 
     if (barcodescanRes == "" || barcodescanRes == "-1") {
@@ -476,7 +477,8 @@ class ExpandableSection extends StatefulWidget {
   State<ExpandableSection> createState() => _ExpandableSectionState();
 }
 
-class _ExpandableSectionState extends State<ExpandableSection> {
+class _ExpandableSectionState extends State<ExpandableSection>
+    with WidgetsBindingObserver {
   TextEditingController namecontroller1 = TextEditingController();
   TextEditingController pricecontroller1 = TextEditingController();
   TextEditingController qtycontroller1 = TextEditingController();
